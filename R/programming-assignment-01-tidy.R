@@ -21,13 +21,15 @@ load_specdata <- function(directory = "data/specdata", id = 1:332) {
   
   # map read_csv over paths
   res <- paths %>% 
-    map( ~ read_csv(.x, col_types = cols(), guess_max = 10E5)) %>% 
+    map( ~ data.table::fread(.x)) %>% 
     
     # bind the resulting list of data frames together
     bind_rows() %>% 
     
     # convert all column names to lower snakecase
-    janitor::clean_names()
+    janitor::clean_names() %>% 
+    
+    as_tibble()
   
   res
 }
