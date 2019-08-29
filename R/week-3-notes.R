@@ -6,6 +6,10 @@ data(iris)
 mtcars
 iris
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 iris %>% 
   filter(Species == "virginica") %>% 
   summarize(mean = mean(Sepal.Length))
